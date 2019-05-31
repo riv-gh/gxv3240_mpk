@@ -16,28 +16,6 @@ namespace gxv3240_mpk
     public partial class Form1 : Form
     {
 
-        class gs_btn
-        {
-            public string name;
-            public string userid;
-            public string mode;
-
-            public gs_btn() { }
-
-            public gs_btn(string gs_btn_str, string def = "default")
-            {
-                string[] tmp_arr = gs_btn_str.Split('\t');
-                name = tmp_arr[0];
-                userid = tmp_arr[1];
-                mode = (tmp_arr.Length < 3) ? def : tmp_arr[2];
-            }
-
-            public override string ToString()
-            {
-                return String.Format("name: {0}, userid: {1}, mode: {2}", name, userid, mode);
-            }
-        }
-
         public Form1()
         {
             InitializeComponent();
@@ -284,13 +262,13 @@ namespace gxv3240_mpk
                 click_addok();
                 global_i++;
                 timer2.Start();
+                this.Text = String.Format("{0}/{1}", global_i, global_len);
             }
             else
             {
                 this.Text = "complete!";
                 MessageBox.Show("complete!");
             }
-            this.Text = String.Format("{0}/{1}", global_i, global_len);
         }
         #endregion
 
@@ -301,13 +279,17 @@ namespace gxv3240_mpk
         }
         private void btnNavigate_Click(object sender, EventArgs e)
         {
-            if (tbUrl.Text.IndexOf("http://") != 0)
+            if (cbUrl.Text.IndexOf("http://") != 0)
             {
-                tbUrl.Text = "http://" + tbUrl.Text;
+                cbUrl.Text = "http://" + cbUrl.Text;
             }
-            webBrowser.Navigate(tbUrl.Text);
+            if (!cbUrl.Items.Contains(cbUrl.Text))
+            {
+                cbUrl.Items.Add(cbUrl.Text);
+            }
+            webBrowser.Navigate(cbUrl.Text);
         }
-        private void tbUrl_KeyPress(object sender, KeyPressEventArgs e)
+        private void cbUrl_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)13)
             {
@@ -411,6 +393,16 @@ namespace gxv3240_mpk
             threadChekUpdate.Start();
             Thread threadWikiInBrowser = new Thread(() => wikiInBrowser(webBrowser, tbBrowserSorce.Text));
             threadWikiInBrowser.Start();
+            if (Properties.Settings.Default.urls.Length>0)
+            {
+                string[] tmp_url_arr = Properties.Settings.Default.urls.Split('|');
+                for (int i = 0; i < tmp_url_arr.Length; i++)
+                {
+                    cbUrl.Items.Add(tmp_url_arr[i]);
+                }     
+            }
+
+            //Properties.Settings.Default
         }
         private void Form1_Shown(object sender, EventArgs e)
         {
@@ -445,8 +437,38 @@ namespace gxv3240_mpk
             
         }
 
+
         #endregion
 
+        private void cbUrl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbUrl.Text = cbUrl.Text;
+        }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Properties.Settings.Default.urls.Length > 0)
+            {
+                string tmp = "";
+                for(int i=0; i<cbUrl.Items.Count; i++)
+                {
+                    if (tmp.Length == 0)
+                    {
+                        tmp = cbUrl.Items[i].ToString();
+                    }
+                    else
+                    {
+                        tmp += "|" + cbUrl.Items[i].ToString();
+                    }
+                }
+                Properties.Settings.Default.urls = tmp;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void btnUrlClear_Click(object sender, EventArgs e)
+        {
+            cbUrl.Items.Clear();
+        }
     }
 }

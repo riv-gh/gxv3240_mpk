@@ -43,7 +43,6 @@
             this.tbMain = new System.Windows.Forms.TextBox();
             this.btnTest5 = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.tbUrl = new System.Windows.Forms.TextBox();
             this.btnDoLogin = new System.Windows.Forms.Button();
             this.tbLogin = new System.Windows.Forms.TextBox();
             this.tbPass = new System.Windows.Forms.TextBox();
@@ -57,6 +56,8 @@
             this.trackTimerDelay = new System.Windows.Forms.TrackBar();
             this.lTimerDelay = new System.Windows.Forms.Label();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.cbUrl = new System.Windows.Forms.ComboBox();
+            this.btnUrlClear = new System.Windows.Forms.Button();
             this.gbTest.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackTimerDelay)).BeginInit();
             this.SuspendLayout();
@@ -181,15 +182,6 @@
             this.timer2.Interval = 1500;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // tbUrl
-            // 
-            this.tbUrl.Location = new System.Drawing.Point(12, 41);
-            this.tbUrl.Name = "tbUrl";
-            this.tbUrl.Size = new System.Drawing.Size(156, 20);
-            this.tbUrl.TabIndex = 11;
-            this.tbUrl.Text = "http://";
-            this.tbUrl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbUrl_KeyPress);
-            // 
             // btnDoLogin
             // 
             this.btnDoLogin.Location = new System.Drawing.Point(174, 12);
@@ -221,7 +213,7 @@
             // 
             this.btnNavigate.Location = new System.Drawing.Point(174, 41);
             this.btnNavigate.Name = "btnNavigate";
-            this.btnNavigate.Size = new System.Drawing.Size(75, 23);
+            this.btnNavigate.Size = new System.Drawing.Size(75, 21);
             this.btnNavigate.TabIndex = 15;
             this.btnNavigate.Text = "Go";
             this.btnNavigate.UseVisualStyleBackColor = true;
@@ -327,11 +319,34 @@
             this.timer3.Interval = 500;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
+            // cbUrl
+            // 
+            this.cbUrl.FormattingEnabled = true;
+            this.cbUrl.Location = new System.Drawing.Point(12, 41);
+            this.cbUrl.Name = "cbUrl";
+            this.cbUrl.Size = new System.Drawing.Size(137, 21);
+            this.cbUrl.TabIndex = 22;
+            this.cbUrl.Text = "http://";
+            this.cbUrl.SelectedIndexChanged += new System.EventHandler(this.cbUrl_SelectedIndexChanged);
+            this.cbUrl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbUrl_KeyPress);
+            // 
+            // btnUrlClear
+            // 
+            this.btnUrlClear.Location = new System.Drawing.Point(145, 41);
+            this.btnUrlClear.Name = "btnUrlClear";
+            this.btnUrlClear.Size = new System.Drawing.Size(23, 22);
+            this.btnUrlClear.TabIndex = 23;
+            this.btnUrlClear.Text = "x";
+            this.btnUrlClear.UseVisualStyleBackColor = true;
+            this.btnUrlClear.Click += new System.EventHandler(this.btnUrlClear_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1025, 483);
+            this.Controls.Add(this.btnUrlClear);
+            this.Controls.Add(this.cbUrl);
             this.Controls.Add(this.lTimerDelay);
             this.Controls.Add(this.trackTimerDelay);
             this.Controls.Add(this.btnGet);
@@ -342,11 +357,11 @@
             this.Controls.Add(this.tbPass);
             this.Controls.Add(this.tbLogin);
             this.Controls.Add(this.btnDoLogin);
-            this.Controls.Add(this.tbUrl);
             this.Controls.Add(this.tbMain);
             this.Controls.Add(this.webBrowser);
             this.Name = "Form1";
             this.Text = "gxv3240_mpk";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.gbTest.ResumeLayout(false);
@@ -372,7 +387,6 @@
         private System.Windows.Forms.TextBox tbMain;
         private System.Windows.Forms.Button btnTest5;
         private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.TextBox tbUrl;
         private System.Windows.Forms.Button btnDoLogin;
         private System.Windows.Forms.TextBox tbLogin;
         private System.Windows.Forms.TextBox tbPass;
@@ -386,6 +400,8 @@
         private System.Windows.Forms.TrackBar trackTimerDelay;
         private System.Windows.Forms.Label lTimerDelay;
         private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.ComboBox cbUrl;
+        private System.Windows.Forms.Button btnUrlClear;
     }
 }
 
