@@ -31,26 +31,14 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.webBrowser = new System.Windows.Forms.WebBrowser();
-            this.btnTest1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.btnTest2 = new System.Windows.Forms.Button();
-            this.btnTest3 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.btnTest4 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.tbMain = new System.Windows.Forms.TextBox();
-            this.btnTest5 = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.btnDoLogin = new System.Windows.Forms.Button();
             this.tbLogin = new System.Windows.Forms.TextBox();
             this.tbPass = new System.Windows.Forms.TextBox();
             this.btnNavigate = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.gbTest = new System.Windows.Forms.GroupBox();
-            this.tbBrowserSorce = new System.Windows.Forms.TextBox();
-            this.btnTestBrowser = new System.Windows.Forms.Button();
             this.btnWrite = new System.Windows.Forms.Button();
             this.btnGet = new System.Windows.Forms.Button();
             this.trackTimerDelay = new System.Windows.Forms.TrackBar();
@@ -58,8 +46,13 @@
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.cbUrl = new System.Windows.Forms.ComboBox();
             this.btnUrlClear = new System.Windows.Forms.Button();
-            this.gbTest.SuspendLayout();
+            this.btnTest1 = new System.Windows.Forms.Button();
+            this.btnTestBrowser = new System.Windows.Forms.Button();
+            this.tbBrowserSorce = new System.Windows.Forms.TextBox();
+            this.gbTest = new System.Windows.Forms.GroupBox();
+            this.btnGbTestHide = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackTimerDelay)).BeginInit();
+            this.gbTest.SuspendLayout();
             this.SuspendLayout();
             // 
             // webBrowser
@@ -71,87 +64,14 @@
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
             this.webBrowser.ScriptErrorsSuppressed = true;
-            this.webBrowser.Size = new System.Drawing.Size(758, 459);
+            this.webBrowser.Size = new System.Drawing.Size(711, 459);
             this.webBrowser.TabIndex = 0;
             this.webBrowser.Url = new System.Uri("", System.UriKind.Relative);
-            // 
-            // btnTest1
-            // 
-            this.btnTest1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnTest1.Location = new System.Drawing.Point(16, -27);
-            this.btnTest1.Name = "btnTest1";
-            this.btnTest1.Size = new System.Drawing.Size(75, 23);
-            this.btnTest1.TabIndex = 1;
-            this.btnTest1.Text = "test1";
-            this.btnTest1.UseVisualStyleBackColor = true;
-            this.btnTest1.Click += new System.EventHandler(this.btnTest1_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(16, 48);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "phone1";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(122, 48);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.Text = "1";
-            // 
-            // btnTest2
-            // 
-            this.btnTest2.Location = new System.Drawing.Point(97, 19);
-            this.btnTest2.Name = "btnTest2";
-            this.btnTest2.Size = new System.Drawing.Size(75, 23);
-            this.btnTest2.TabIndex = 4;
-            this.btnTest2.Text = "test2[clear]";
-            this.btnTest2.UseVisualStyleBackColor = true;
-            this.btnTest2.Click += new System.EventHandler(this.btnTest2_Click);
-            // 
-            // btnTest3
-            // 
-            this.btnTest3.Location = new System.Drawing.Point(178, 19);
-            this.btnTest3.Name = "btnTest3";
-            this.btnTest3.Size = new System.Drawing.Size(75, 23);
-            this.btnTest3.TabIndex = 5;
-            this.btnTest3.Text = "test3[vis]";
-            this.btnTest3.UseVisualStyleBackColor = true;
-            this.btnTest3.Click += new System.EventHandler(this.btnTest3_Click);
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(228, 48);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 6;
-            this.textBox3.Text = "10";
-            // 
-            // btnTest4
-            // 
-            this.btnTest4.Location = new System.Drawing.Point(259, 19);
-            this.btnTest4.Name = "btnTest4";
-            this.btnTest4.Size = new System.Drawing.Size(75, 23);
-            this.btnTest4.TabIndex = 7;
-            this.btnTest4.Text = "test4[login]";
-            this.btnTest4.UseVisualStyleBackColor = true;
-            this.btnTest4.Click += new System.EventHandler(this.btnTest4_Click);
             // 
             // timer1
             // 
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(334, 48);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 8;
-            this.textBox4.Text = "40";
             // 
             // tbMain
             // 
@@ -166,16 +86,6 @@
             this.tbMain.Text = resources.GetString("tbMain.Text");
             this.tbMain.WordWrap = false;
             this.tbMain.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbMain_KeyDown);
-            // 
-            // btnTest5
-            // 
-            this.btnTest5.Location = new System.Drawing.Point(340, 19);
-            this.btnTest5.Name = "btnTest5";
-            this.btnTest5.Size = new System.Drawing.Size(75, 23);
-            this.btnTest5.TabIndex = 10;
-            this.btnTest5.Text = "test5[add]";
-            this.btnTest5.UseVisualStyleBackColor = true;
-            this.btnTest5.Click += new System.EventHandler(this.btnTest5_Click);
             // 
             // timer2
             // 
@@ -229,46 +139,6 @@
             this.btnClear.Text = "Clear MPK";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // gbTest
-            // 
-            this.gbTest.Controls.Add(this.tbBrowserSorce);
-            this.gbTest.Controls.Add(this.btnTestBrowser);
-            this.gbTest.Controls.Add(this.btnTest1);
-            this.gbTest.Controls.Add(this.btnTest2);
-            this.gbTest.Controls.Add(this.btnTest3);
-            this.gbTest.Controls.Add(this.btnTest4);
-            this.gbTest.Controls.Add(this.btnTest5);
-            this.gbTest.Controls.Add(this.textBox1);
-            this.gbTest.Controls.Add(this.textBox2);
-            this.gbTest.Controls.Add(this.textBox3);
-            this.gbTest.Controls.Add(this.textBox4);
-            this.gbTest.Location = new System.Drawing.Point(278, 70);
-            this.gbTest.Name = "gbTest";
-            this.gbTest.Size = new System.Drawing.Size(442, 245);
-            this.gbTest.TabIndex = 17;
-            this.gbTest.TabStop = false;
-            this.gbTest.Text = "gbTest";
-            this.gbTest.Visible = false;
-            // 
-            // tbBrowserSorce
-            // 
-            this.tbBrowserSorce.Location = new System.Drawing.Point(16, 74);
-            this.tbBrowserSorce.Multiline = true;
-            this.tbBrowserSorce.Name = "tbBrowserSorce";
-            this.tbBrowserSorce.Size = new System.Drawing.Size(146, 128);
-            this.tbBrowserSorce.TabIndex = 12;
-            this.tbBrowserSorce.Text = resources.GetString("tbBrowserSorce.Text");
-            // 
-            // btnTestBrowser
-            // 
-            this.btnTestBrowser.Location = new System.Drawing.Point(16, 208);
-            this.btnTestBrowser.Name = "btnTestBrowser";
-            this.btnTestBrowser.Size = new System.Drawing.Size(75, 23);
-            this.btnTestBrowser.TabIndex = 11;
-            this.btnTestBrowser.Text = "browser";
-            this.btnTestBrowser.UseVisualStyleBackColor = true;
-            this.btnTestBrowser.Click += new System.EventHandler(this.btnTestBrowser_Click);
             // 
             // btnWrite
             // 
@@ -334,39 +204,95 @@
             // 
             this.btnUrlClear.Location = new System.Drawing.Point(145, 41);
             this.btnUrlClear.Name = "btnUrlClear";
-            this.btnUrlClear.Size = new System.Drawing.Size(23, 22);
+            this.btnUrlClear.Size = new System.Drawing.Size(23, 21);
             this.btnUrlClear.TabIndex = 23;
-            this.btnUrlClear.Text = "x";
+            this.btnUrlClear.Text = "❌";
             this.btnUrlClear.UseVisualStyleBackColor = true;
             this.btnUrlClear.Click += new System.EventHandler(this.btnUrlClear_Click);
+            // 
+            // btnTest1
+            // 
+            this.btnTest1.Location = new System.Drawing.Point(6, 65);
+            this.btnTest1.Name = "btnTest1";
+            this.btnTest1.Size = new System.Drawing.Size(75, 23);
+            this.btnTest1.TabIndex = 1;
+            this.btnTest1.Text = "test1";
+            this.btnTest1.UseVisualStyleBackColor = true;
+            // 
+            // btnTestBrowser
+            // 
+            this.btnTestBrowser.Location = new System.Drawing.Point(6, 19);
+            this.btnTestBrowser.Name = "btnTestBrowser";
+            this.btnTestBrowser.Size = new System.Drawing.Size(75, 23);
+            this.btnTestBrowser.TabIndex = 11;
+            this.btnTestBrowser.Text = "browser";
+            this.btnTestBrowser.UseVisualStyleBackColor = true;
+            this.btnTestBrowser.Click += new System.EventHandler(this.btnTestBrowser_Click);
+            // 
+            // tbBrowserSorce
+            // 
+            this.tbBrowserSorce.Location = new System.Drawing.Point(583, 24);
+            this.tbBrowserSorce.Multiline = true;
+            this.tbBrowserSorce.Name = "tbBrowserSorce";
+            this.tbBrowserSorce.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.tbBrowserSorce.Size = new System.Drawing.Size(355, 168);
+            this.tbBrowserSorce.TabIndex = 12;
+            this.tbBrowserSorce.Text = resources.GetString("tbBrowserSorce.Text");
+            this.tbBrowserSorce.Visible = false;
+            this.tbBrowserSorce.WordWrap = false;
+            // 
+            // gbTest
+            // 
+            this.gbTest.Controls.Add(this.btnGbTestHide);
+            this.gbTest.Controls.Add(this.btnTestBrowser);
+            this.gbTest.Controls.Add(this.btnTest1);
+            this.gbTest.Location = new System.Drawing.Point(255, 3);
+            this.gbTest.Name = "gbTest";
+            this.gbTest.Size = new System.Drawing.Size(292, 109);
+            this.gbTest.TabIndex = 17;
+            this.gbTest.TabStop = false;
+            this.gbTest.Text = "gbTest";
+            this.gbTest.Visible = false;
+            this.gbTest.MouseHover += new System.EventHandler(this.gbTest_MouseHover);
+            // 
+            // btnGbTestHide
+            // 
+            this.btnGbTestHide.Location = new System.Drawing.Point(242, 19);
+            this.btnGbTestHide.Name = "btnGbTestHide";
+            this.btnGbTestHide.Size = new System.Drawing.Size(44, 23);
+            this.btnGbTestHide.TabIndex = 12;
+            this.btnGbTestHide.Text = "^";
+            this.btnGbTestHide.UseVisualStyleBackColor = true;
+            this.btnGbTestHide.Click += new System.EventHandler(this.btnGbTestHide_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1025, 483);
+            this.ClientSize = new System.Drawing.Size(978, 483);
+            this.Controls.Add(this.tbBrowserSorce);
             this.Controls.Add(this.btnUrlClear);
             this.Controls.Add(this.cbUrl);
+            this.Controls.Add(this.btnNavigate);
             this.Controls.Add(this.lTimerDelay);
             this.Controls.Add(this.trackTimerDelay);
             this.Controls.Add(this.btnGet);
             this.Controls.Add(this.btnWrite);
             this.Controls.Add(this.gbTest);
             this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.btnNavigate);
             this.Controls.Add(this.tbPass);
             this.Controls.Add(this.tbLogin);
             this.Controls.Add(this.btnDoLogin);
             this.Controls.Add(this.tbMain);
             this.Controls.Add(this.webBrowser);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "gxv3240_mpk";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
-            this.gbTest.ResumeLayout(false);
-            this.gbTest.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackTimerDelay)).EndInit();
+            this.gbTest.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -375,33 +301,26 @@
         #endregion
 
         private System.Windows.Forms.WebBrowser webBrowser;
-        private System.Windows.Forms.Button btnTest1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button btnTest2;
-        private System.Windows.Forms.Button btnTest3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button btnTest4;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox tbMain;
-        private System.Windows.Forms.Button btnTest5;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Button btnDoLogin;
         private System.Windows.Forms.TextBox tbLogin;
         private System.Windows.Forms.TextBox tbPass;
         private System.Windows.Forms.Button btnNavigate;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.GroupBox gbTest;
         private System.Windows.Forms.Button btnWrite;
-        private System.Windows.Forms.Button btnTestBrowser;
-        private System.Windows.Forms.TextBox tbBrowserSorce;
         private System.Windows.Forms.Button btnGet;
         private System.Windows.Forms.TrackBar trackTimerDelay;
         private System.Windows.Forms.Label lTimerDelay;
         private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.ComboBox cbUrl;
         private System.Windows.Forms.Button btnUrlClear;
+        private System.Windows.Forms.Button btnTest1;
+        private System.Windows.Forms.Button btnTestBrowser;
+        private System.Windows.Forms.TextBox tbBrowserSorce;
+        private System.Windows.Forms.GroupBox gbTest;
+        private System.Windows.Forms.Button btnGbTestHide;
     }
 }
 

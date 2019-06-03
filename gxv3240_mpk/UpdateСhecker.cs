@@ -28,7 +28,7 @@ namespace gxv3240_mpk
             versionChecker.DownloadStringCompleted += new DownloadStringCompletedEventHandler(versionCheck);
             versionChecker.DownloadStringAsync(new Uri(version_date_link));
         }
-        public static string GeWikitPage()
+        private static string GeWikitPage()
         {
             WebClient wc = new WebClient();
             wc.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
