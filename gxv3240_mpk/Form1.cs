@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.Diagnostics;
@@ -25,155 +19,8 @@ namespace gxv3240_mpk
         List <gs_btn> btn_list;
         bool nextCliked;
 
-        #region MPK
-        private void click_addNewMPK()
-        {
-            webBrowser.Document.Window.Frames[0].Document.GetElementById("a_append").InvokeMember("click");
-        }
-        private void click_next()
-        {
-            webBrowser.Document.Window.Frames[0].Document.GetElementById("downpage").InvokeMember("click");
-        }
-        private void click_prev()
-        {
-            webBrowser.Document.Window.Frames[0].Document.GetElementById("uppage").InvokeMember("click");
-        }
-        private void input_name(string name)
-        {
-            webBrowser.Document.GetElementById("addname").SetAttribute("value", name);
-        }
-        private void input_userid(string userid)
-        {
-            webBrowser.Document.GetElementById("adduserid").SetAttribute("value", userid);
-        }
-        private void click_addok()
-        {
-            webBrowser.Document.GetElementById("a_addok").InvokeMember("click");
-        }
-        private void set_blf()
-        {
-            webBrowser.Document.GetElementById("addkeymode").SetAttribute("value", "1");
-        }
-        private void clear_mpk()
-        {
-            webBrowser.Document.Window.Frames[0].Document.GetElementById("t_check").InvokeMember("click");
-            webBrowser.Document.Window.Frames[0].Document.GetElementById("all_del").InvokeMember("click");
-            webBrowser.Document.Window.Frames[0].Document.GetElementById("jqi_state0_buttonOK").InvokeMember("click");
-        }
-        private void do_login(string login = "admin", string pass = "admin")
-        {
-            webBrowser.Document.GetElementById("username").SetAttribute("value", login);
-            webBrowser.Document.GetElementById("password").SetAttribute("value", pass);
-            webBrowser.Document.GetElementById("loginbtn").InvokeMember("click");
-        }
-        private void click_advset_menu()
-        {
-            webBrowser.Document.GetElementById("advset_menu").InvokeMember("click");
-        }
-        private void click_m_mpkextset1()
-        {
-            webBrowser.Document.GetElementById("m_mpkextset1").InvokeMember("click");
-        }
-        private string get_blf_from_page()
-        {
-            try
-            {
-                string js_gxv3240_get_mpk =
-                    @"
-	                    var name_arr = [];
-	                    var userid_arr = [];
-	                    var mode_arr = [];
-	                    var to_return = '#mpk from page ' + document.getElementById('pagenum').innerText + '\r\n';
-	                    var tmp_arr = document.querySelectorAll('.a_des');
-	                    for (var i=0; i<tmp_arr.length; i++) {
-		                    name_arr.push(tmp_arr[i].innerText);
-	                    }
-	                    var tmp_arr = document.querySelectorAll('.a_value');
-	                    for (var i=0; i<tmp_arr.length; i++) {
-		                    userid_arr.push(tmp_arr[i].innerText);
-	                    }
-	                    var tmp_arr = document.querySelectorAll('.a_mode');
-	                    for (var i=0; i<tmp_arr.length; i++) {
-		                    userid_arr.push(tmp_arr[i].innerText);
-		                    if (tmp_arr[i].innerText == 'Busy Lamp Field (BLF)') {
-			                    mode_arr.push('blf');
-		                    }
-		                    else {
-			                    mode_arr.push('sd');
-		                    }
-	                    }
-	                    for (var i=0; i<name_arr.length; i++) {
-		                    to_return+=name_arr[i]+'\t'+userid_arr[i]+'\t'+mode_arr[i]+'\r\n';
-	                    }
-	                    var gxv3240_get_mpk_return = to_return;
-                    ";
-                HtmlDocument doc = webBrowser.Document.Window.Frames[0].Document;
-                HtmlElement head = doc.GetElementsByTagName("head")[0];
-                HtmlElement s = doc.CreateElement("script");
-                s.SetAttribute("text", js_gxv3240_get_mpk);
-                head.AppendChild(s);
-                return doc.InvokeScript("eval", new object[] { "gxv3240_get_mpk_return" }).ToString();
+        gs_mpk MPK; //to change mpk
 
-            }
-            catch
-            {
-                return "#error export mpk\r\n";
-            }
-        }
-        #endregion
-
-
-        #region ChekUpdate
-        private string GetCurVersion()
-        {
-            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
-            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
-            return fvi.FileVersion;
-        }
-        private void ChekUpdate()
-        {
-            WebClient versionChecker = new WebClient();
-            versionChecker.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
-            versionChecker.DownloadStringCompleted += new DownloadStringCompletedEventHandler(versionCheck);
-            versionChecker.DownloadStringAsync(new Uri("https://raw.githubusercontent.com/riv-gh/gxv3240_mpk/master/version_date.txt"));
-        }
-        private string GeWikitPage()
-        {
-            WebClient wc = new WebClient();
-            wc.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
-            wc.DownloadStringCompleted += new DownloadStringCompletedEventHandler(versionCheck);
-            return wc.DownloadString(new Uri("https://raw.githubusercontent.com/riv-gh/gxv3240_mpk/master/readme.html"));
-        }
-
-        private void wikiInBrowser(WebBrowser wb, string defaultHtml)
-        {
-            try
-            {
-                wb.DocumentText = GeWikitPage();
-            }
-            catch
-            {
-                wb.DocumentText = defaultHtml;
-            }
-        }
-
-        private void versionCheck(object sender, DownloadStringCompletedEventArgs e)
-        {
-            if (e.Error != null)
-                return;
-            string availableVersion = e.Result.Trim();
-            // MessageBox.Show(e.Result);
-            if (availableVersion != GetCurVersion())
-            {
-                DialogResult dialogResult = MessageBox.Show($"Version {availableVersion} is available.\r\nOpen project page to download it?", "New version available ", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    Process.Start("https://github.com/riv-gh/gxv3240_mpk/releases");
-                }
-            }
-            
-        }
-        #endregion
 
         #region test buttons
         private void btnTest1_Click(object sender, EventArgs e)
@@ -183,7 +30,7 @@ namespace gxv3240_mpk
         }
         private void btnTest2_Click(object sender, EventArgs e)
         {
-            clear_mpk();
+            MPK.clear_mpk();
         }
         private void btnTest3_Click(object sender, EventArgs e)
         {
@@ -191,7 +38,7 @@ namespace gxv3240_mpk
         }
         private void btnTest4_Click(object sender, EventArgs e)
         {
-            do_login();
+            MPK.do_login();
         }
         private void btnTest5_Click(object sender, EventArgs e)
         {
@@ -231,8 +78,8 @@ namespace gxv3240_mpk
             try
             {
                 timer1.Stop();
-                click_advset_menu();
-                click_m_mpkextset1();
+                MPK.click_advset_menu();
+                MPK.click_m_mpkextset1();
                 timer3.Start();
             }
             catch { }
@@ -247,19 +94,19 @@ namespace gxv3240_mpk
             timer2.Stop();
             if ((global_i == 20) && (!nextCliked))
             {
-                click_next();
+                MPK.click_next();
                 nextCliked = true;
             }
             if (global_i < global_len)
             {
-                click_addNewMPK();
-                input_name(btn_list[global_i].name);
-                input_userid(btn_list[global_i].userid);
+                MPK.click_addNewMPK();
+                MPK.input_name(btn_list[global_i].name);
+                MPK.input_userid(btn_list[global_i].userid);
                 if (btn_list[global_i].mode=="blf")
                 {
-                    set_blf();
+                    MPK.set_blf();
                 }
-                click_addok();
+                MPK.click_addok();
                 global_i++;
                 timer2.Start();
                 this.Text = String.Format("{0}/{1}", global_i, global_len);
@@ -304,7 +151,7 @@ namespace gxv3240_mpk
         {
             try
             {
-                do_login(tbLogin.Text, tbPass.Text);
+                MPK.do_login(tbLogin.Text, tbPass.Text);
             }
             catch
             {
@@ -316,7 +163,7 @@ namespace gxv3240_mpk
         {
             try
             {
-                click_prev();
+                MPK.click_prev();
             }
             catch { }
             btnClear.PerformClick();
@@ -351,7 +198,7 @@ namespace gxv3240_mpk
         {
             try
             {
-                clear_mpk();
+                MPK.clear_mpk();
             }
             catch (Exception exc)
             {
@@ -364,14 +211,14 @@ namespace gxv3240_mpk
             {
                 try
                 {
-                    click_prev();
+                    MPK.click_prev();
                 }
                 catch { }
                 tbMain.Clear();
-                tbMain.AppendText(get_blf_from_page());
-                click_next();
-                tbMain.AppendText(get_blf_from_page());
-                click_prev();
+                tbMain.AppendText(MPK.get_blf_from_page());
+                MPK.click_next();
+                tbMain.AppendText(MPK.get_blf_from_page());
+                MPK.click_prev();
             }
             catch (Exception exc)
             {
@@ -388,10 +235,10 @@ namespace gxv3240_mpk
         #region load
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.Text = $"{this.Text} [{GetCurVersion()}]";
-            Thread threadChekUpdate = new Thread(ChekUpdate);
+            this.Text = $"{this.Text} [{WikiAndUpdateСhecker.GetCurVersion()}]";
+            Thread threadChekUpdate = new Thread(WikiAndUpdateСhecker.ChekUpdate);
             threadChekUpdate.Start();
-            Thread threadWikiInBrowser = new Thread(() => wikiInBrowser(webBrowser, tbBrowserSorce.Text));
+            Thread threadWikiInBrowser = new Thread(() => WikiAndUpdateСhecker.wikiInBrowser(webBrowser, tbBrowserSorce.Text));
             threadWikiInBrowser.Start();
             if (Properties.Settings.Default.urls.Length>0)
             {
@@ -402,6 +249,7 @@ namespace gxv3240_mpk
                 }     
             }
 
+            MPK = new gs_mpk(webBrowser);
             //Properties.Settings.Default
         }
         private void Form1_Shown(object sender, EventArgs e)

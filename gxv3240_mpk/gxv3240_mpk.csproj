@@ -68,9 +68,11 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="gs_btn.cs" />
+    <Compile Include="gs_mpk.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="PropertiesSaver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpdateСhecker.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
