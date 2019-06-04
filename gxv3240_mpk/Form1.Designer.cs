@@ -51,6 +51,8 @@
             this.tbBrowserSorce = new System.Windows.Forms.TextBox();
             this.gbTest = new System.Windows.Forms.GroupBox();
             this.btnGbTestHide = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackTimerDelay)).BeginInit();
             this.gbTest.SuspendLayout();
             this.SuspendLayout();
@@ -218,6 +220,7 @@
             this.btnTest1.TabIndex = 1;
             this.btnTest1.Text = "test1";
             this.btnTest1.UseVisualStyleBackColor = true;
+            this.btnTest1.Click += new System.EventHandler(this.btnTest1_Click);
             // 
             // btnTestBrowser
             // 
@@ -243,6 +246,8 @@
             // 
             // gbTest
             // 
+            this.gbTest.Controls.Add(this.button2);
+            this.gbTest.Controls.Add(this.button1);
             this.gbTest.Controls.Add(this.btnGbTestHide);
             this.gbTest.Controls.Add(this.btnTestBrowser);
             this.gbTest.Controls.Add(this.btnTest1);
@@ -264,6 +269,26 @@
             this.btnGbTestHide.Text = "^";
             this.btnGbTestHide.UseVisualStyleBackColor = true;
             this.btnGbTestHide.Click += new System.EventHandler(this.btnGbTestHide_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(105, 65);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(197, 65);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
@@ -321,6 +346,8 @@
         private System.Windows.Forms.TextBox tbBrowserSorce;
         private System.Windows.Forms.GroupBox gbTest;
         private System.Windows.Forms.Button btnGbTestHide;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 

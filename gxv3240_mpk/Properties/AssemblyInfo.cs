@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
 [assembly: AssemblyTitle("gxv3240_mpk")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("it's created to simplify the routine work to a grandstream gxv 3240")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("https://github.com/riv-gh/gxv3240_mpk")]
 [assembly: AssemblyProduct("gxv3240_mpk")]
-[assembly: AssemblyCopyright("Copyright ©  2019")]
+[assembly: AssemblyCopyright("daenur [https://github.com/riv-gh]")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // Можно задать все значения или принять номер сборки и номер редакции по умолчанию.
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("19.06.03.1")]
-[assembly: AssemblyFileVersion("19.06.03.1")]
+[assembly: AssemblyVersion("19.06.04.0")]
+[assembly: AssemblyFileVersion("19.06.04.0")]

@@ -75,7 +75,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="PropertiesSaver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UpdateСhecker.cs" />
+    <Compile Include="UpdateChecker.cs" />
+    <Compile Include="WikiLoader.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

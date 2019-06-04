@@ -4,6 +4,10 @@ using System.Windows.Forms;
 using System.Net;
 using System.Diagnostics;
 using System.Threading;
+using System.Xml.Linq;
+using System.Net.Http;
+
+using System.Runtime.Serialization;
 
 namespace gxv3240_mpk
 {
@@ -78,7 +82,7 @@ namespace gxv3240_mpk
         }
         private void btnNavigate_Click(object sender, EventArgs e)
         {
-            if (cbUrl.Text.IndexOf("http://") != 0)
+            if ( (cbUrl.Text.IndexOf("http://") != 0) || (cbUrl.Text.IndexOf("https://") != 0) )
             {
                 cbUrl.Text = "http://" + cbUrl.Text;
             }
@@ -183,10 +187,10 @@ namespace gxv3240_mpk
         #region load
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.Text = $"{this.Text} [{WikiAndUpdateСhecker.GetCurVersion()}]";
-            Thread threadChekUpdate = new Thread(WikiAndUpdateСhecker.ChekUpdate);
+            this.Text = $"{this.Text} [{UpdateChecker.GetCurVersion()}]";
+            Thread threadChekUpdate = new Thread(UpdateChecker.ChekUpdate);
             threadChekUpdate.Start();
-            Thread threadWikiInBrowser = new Thread(() => WikiAndUpdateСhecker.wikiInBrowser(webBrowser, tbBrowserSorce.Text));
+            Thread threadWikiInBrowser = new Thread(() => WikiLoader.wikiInBrowser(webBrowser, tbBrowserSorce.Text));
             threadWikiInBrowser.Start();
 
             PropertiesSaver.GetUrls(cbUrl);
@@ -244,7 +248,7 @@ namespace gxv3240_mpk
         {
             cbUrl.Items.Clear();
         }
-
+        
         #region For tests
         private void gbTest_MouseHover(object sender, EventArgs e)
         {
@@ -258,6 +262,20 @@ namespace gxv3240_mpk
         {
             webBrowser.DocumentText = Clipboard.GetText();
         }
+
+        private void btnTest1_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
         #endregion
 
 
