@@ -60,6 +60,11 @@ namespace gxv3240_mpk
             webBrowser.Document.GetElementById("advset_menu").InvokeMember("click");
         }
 
+        public void click_account_menu()
+        {
+            webBrowser.Document.GetElementById("account_menu").InvokeMember("click");
+        }
+
         public void click_m_mpkextset1()
         {
             webBrowser.Document.GetElementById("m_mpkextset1").InvokeMember("click");
@@ -110,6 +115,26 @@ namespace gxv3240_mpk
             {
                 return "#error export mpk\r\n";
             }
+        }
+
+        public string get_accountname()
+        {
+            try
+            {
+                foreach (HtmlElement span in webBrowser.Document.Window.Frames[0].Document.GetElementsByTagName("span"))
+                {
+                    if (span.GetAttribute("className") == "a_acct")
+                    {
+                        return span.InnerText;
+                    }
+                }
+            }
+            catch { }
+            return "";
+        }
+        private void get_user_name_doccompl()
+        {
+            MessageBox.Show(get_accountname());
         }
     }
 }

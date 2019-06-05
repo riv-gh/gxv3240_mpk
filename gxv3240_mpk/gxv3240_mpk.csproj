@@ -73,6 +73,7 @@
     <Compile Include="gs_btn.cs" />
     <Compile Include="gs_mpk.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Prompt.cs" />
     <Compile Include="PropertiesSaver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UpdateChecker.cs" />

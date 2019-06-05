@@ -36,7 +36,7 @@ namespace gxv3240_mpk
                 timer1.Stop();
                 MPK.click_advset_menu();
                 MPK.click_m_mpkextset1();
-                timer3.Start();
+                //timer3.Start();
             }
             catch { }
         }
@@ -79,18 +79,39 @@ namespace gxv3240_mpk
         private void tbMain_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.A) tbMain.SelectAll();
+
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Tab && tbMain.Focused)
+            {
+                tbMain.Text = tbMain.Text.Insert(tbMain.SelectionStart, "\t");
+                //tbMain.SelectionStart = tbMain.SelectionStart + 1;
+            }
+            //return base.ProcessCmdKey(ref msg, keyData);
+            return false;
         }
         private void btnNavigate_Click(object sender, EventArgs e)
         {
-            if ( (cbUrl.Text.IndexOf("http://") != 0) || (cbUrl.Text.IndexOf("https://") != 0) )
+            if ( (cbUrl.Text.IndexOf("http://") != 0) /*|| (cbUrl.Text.IndexOf("https://") != 0)*/ )
             {
                 cbUrl.Text = "http://" + cbUrl.Text;
             }
+            string link = cbUrl.Text.Split('|')[0];
+            webBrowser.Navigate(link);
+        }
+        private void btnUrlAdd_Click(object sender, EventArgs e)
+        {
+            cbUrl.Text += $"| {MPK.get_accountname()}";
             if (!cbUrl.Items.Contains(cbUrl.Text))
             {
                 cbUrl.Items.Add(cbUrl.Text);
             }
-            webBrowser.Navigate(cbUrl.Text);
+        }
+        private void btnUrlClear_Click(object sender, EventArgs e)
+        {
+            //cbUrl.Items.Clear();
+            cbUrl.Items.Remove(cbUrl.SelectedItem);
         }
         private void cbUrl_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -198,6 +219,7 @@ namespace gxv3240_mpk
             MPK = new gs_mpk(webBrowser);
 
         }
+
         private void Form1_Shown(object sender, EventArgs e)
         {
             webBrowser.DocumentText = @"
@@ -243,11 +265,6 @@ namespace gxv3240_mpk
         {
             PropertiesSaver.SaveUrls(cbUrl);
         }
-
-        private void btnUrlClear_Click(object sender, EventArgs e)
-        {
-            cbUrl.Items.Clear();
-        }
         
         #region For tests
         private void gbTest_MouseHover(object sender, EventArgs e)
@@ -269,15 +286,13 @@ namespace gxv3240_mpk
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
         }
         private void button2_Click(object sender, EventArgs e)
         {
 
         }
-
         #endregion
-
 
     }
 }

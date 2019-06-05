@@ -50,9 +50,10 @@
             this.btnTestBrowser = new System.Windows.Forms.Button();
             this.tbBrowserSorce = new System.Windows.Forms.TextBox();
             this.gbTest = new System.Windows.Forms.GroupBox();
-            this.btnGbTestHide = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnGbTestHide = new System.Windows.Forms.Button();
+            this.btnUrlAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackTimerDelay)).BeginInit();
             this.gbTest.SuspendLayout();
             this.SuspendLayout();
@@ -123,11 +124,11 @@
             // 
             // btnNavigate
             // 
-            this.btnNavigate.Location = new System.Drawing.Point(174, 41);
+            this.btnNavigate.Location = new System.Drawing.Point(204, 41);
             this.btnNavigate.Name = "btnNavigate";
-            this.btnNavigate.Size = new System.Drawing.Size(75, 21);
+            this.btnNavigate.Size = new System.Drawing.Size(45, 21);
             this.btnNavigate.TabIndex = 15;
-            this.btnNavigate.Text = "Go";
+            this.btnNavigate.Text = "➜";
             this.btnNavigate.UseVisualStyleBackColor = true;
             this.btnNavigate.Click += new System.EventHandler(this.btnNavigate_Click);
             // 
@@ -193,10 +194,11 @@
             // 
             // cbUrl
             // 
+            this.cbUrl.DropDownWidth = 236;
             this.cbUrl.FormattingEnabled = true;
             this.cbUrl.Location = new System.Drawing.Point(12, 41);
             this.cbUrl.Name = "cbUrl";
-            this.cbUrl.Size = new System.Drawing.Size(137, 21);
+            this.cbUrl.Size = new System.Drawing.Size(139, 21);
             this.cbUrl.TabIndex = 22;
             this.cbUrl.Text = "http://";
             this.cbUrl.SelectedIndexChanged += new System.EventHandler(this.cbUrl_SelectedIndexChanged);
@@ -204,7 +206,7 @@
             // 
             // btnUrlClear
             // 
-            this.btnUrlClear.Location = new System.Drawing.Point(145, 41);
+            this.btnUrlClear.Location = new System.Drawing.Point(179, 41);
             this.btnUrlClear.Name = "btnUrlClear";
             this.btnUrlClear.Size = new System.Drawing.Size(23, 21);
             this.btnUrlClear.TabIndex = 23;
@@ -260,15 +262,15 @@
             this.gbTest.Visible = false;
             this.gbTest.MouseHover += new System.EventHandler(this.gbTest_MouseHover);
             // 
-            // btnGbTestHide
+            // button2
             // 
-            this.btnGbTestHide.Location = new System.Drawing.Point(242, 19);
-            this.btnGbTestHide.Name = "btnGbTestHide";
-            this.btnGbTestHide.Size = new System.Drawing.Size(44, 23);
-            this.btnGbTestHide.TabIndex = 12;
-            this.btnGbTestHide.Text = "^";
-            this.btnGbTestHide.UseVisualStyleBackColor = true;
-            this.btnGbTestHide.Click += new System.EventHandler(this.btnGbTestHide_Click);
+            this.button2.Location = new System.Drawing.Point(197, 65);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -280,21 +282,32 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnGbTestHide
             // 
-            this.button2.Location = new System.Drawing.Point(197, 65);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnGbTestHide.Location = new System.Drawing.Point(242, 19);
+            this.btnGbTestHide.Name = "btnGbTestHide";
+            this.btnGbTestHide.Size = new System.Drawing.Size(44, 23);
+            this.btnGbTestHide.TabIndex = 12;
+            this.btnGbTestHide.Text = "^";
+            this.btnGbTestHide.UseVisualStyleBackColor = true;
+            this.btnGbTestHide.Click += new System.EventHandler(this.btnGbTestHide_Click);
+            // 
+            // btnUrlAdd
+            // 
+            this.btnUrlAdd.Location = new System.Drawing.Point(154, 41);
+            this.btnUrlAdd.Name = "btnUrlAdd";
+            this.btnUrlAdd.Size = new System.Drawing.Size(23, 21);
+            this.btnUrlAdd.TabIndex = 24;
+            this.btnUrlAdd.Text = "➕";
+            this.btnUrlAdd.UseVisualStyleBackColor = true;
+            this.btnUrlAdd.Click += new System.EventHandler(this.btnUrlAdd_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(978, 483);
+            this.Controls.Add(this.btnUrlAdd);
             this.Controls.Add(this.tbBrowserSorce);
             this.Controls.Add(this.btnUrlClear);
             this.Controls.Add(this.cbUrl);
@@ -348,6 +361,7 @@
         private System.Windows.Forms.Button btnGbTestHide;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnUrlAdd;
     }
 }
 

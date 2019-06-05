@@ -44,17 +44,20 @@ namespace gxv3240_mpk
             Array.Sort(to_return, (a, b) => -a.CompareTo(b));
             return to_return;
         }
-        public static int ThisVersionPosition()
+        public static int ThisVersionPosition(out string[] gitReleaseTagArr)
         {
-            return Array.IndexOf(GetVersionsTags(GetReleaseJson()), GetCurVersion());
+            //return Array.IndexOf(GetVersionsTags(GetReleaseJson()), GetCurVersion());
+            gitReleaseTagArr = GetVersionsTags(GetReleaseJson());
+            return Array.IndexOf(gitReleaseTagArr, GetCurVersion());
         }
         public static void ChekUpdate()
         {
-            int thisVersionPosition = ThisVersionPosition();
+            string[] gitRelases;
+            int thisVersionPosition = ThisVersionPosition(out gitRelases);
             if (thisVersionPosition != 0)
             {
                 DialogResult dialogResult = MessageBox.Show(
-                    ( thisVersionPosition!=-1 ? $"{thisVersionPosition} version(s) is available." : "New version(s) is available") +
+                    $"Version { gitRelases[0] } is available." +
                     "\r\nOpen project page to download?",
                     "New version available",
                     MessageBoxButtons.YesNo
