@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone panel</title>
+    <style>
+        #search {
+            min-width: 300px;
+        }
+        #output {
+            width: 100%;
+            height: 300px;
+        };
+    </style>
+</head>
+<body>
+    <a href="/">&lt; на головну</a><br>
+    <h1>Phone panel</h1>
+    <div>   
+        <input type="text" id="search" placeholder="Пошук" list="searchList" autocomplete="off">
+        <datalist id="searchList"></datalist>
+        <button id="add">Додати</button>
+        <button id="clear">x</button>
+        <input type="checkbox" id="initials"><label for="initials">ініціали</label>
+    </div>
+    <textarea id="output" cols="30" rows="10"></textarea>
+    <script>
+        async function loadXMLbook (url = 'http://link.to/contacts.xml') {
+            const response = await fetch(url)
+            const data = await response.text()
+            const parser = new DOMParser()
+            const xmlDoc = parser.parseFromString(data, "text/xml")
+            return xmlDoc
+        }
+        function xmlBookParser (xmlDocument) {
+            const contacts = []
+            xmlDocument.querySelectorAll('Contact').forEach((contact)=>{
+                const fullName = contact.querySelector('FirstName').textContent
+                const phone = contact.querySelector('phonenumber').textContent
+                const fullNameArr = fullName.split(' ')
+                const shortName1 = fullNameArr[0]
+                let shortName2 = shortName1
+                try {
+                    shortName2 = `${shortName1} ${fullNameArr[1][0]}.${fullNameArr[2][0]}.`
+                }
+                catch (err) {
+                    console.error(err)
+                }
+                contacts.push( {
+                    fullName,
+                    shortName1,
+                    shortName2,
+                    phone 
+                } )
+                
+            })
+            return contacts
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {   
+            const xml = await loadXMLbook()
+            const contacts = xmlBookParser( xml )
+
+            const searchListEl = document.getElementById('searchList')
+            contacts.forEach( (contact) => {
+                const option = document.createElement('option')
+                option.textContent = option.value = contact.fullName
+                searchListEl.appendChild(option)
+            })
+
+            const searchEl = document.getElementById('search')
+            const outputEl = document.getElementById('output')
+            const initialsEl = document.getElementById('initials')
+            document.getElementById('add').addEventListener('click', () => {
+                if (searchEl.value) {
+                    const contact = contacts.find( el => el.fullName === searchEl.value)
+                    if (contact) {
+                        const shortName = initialsEl.checked ? contact.shortName2 : contact.shortName1
+                        outputEl.value = `${outputEl.value}\n${shortName}\t${contact.phone}\tblf`
+                        searchEl.value = ''
+                    }
+                }
+            })
+            document.getElementById('clear').addEventListener('click', () => {
+                searchEl.value = ''
+            })
+        })
+
+    </script>
+</body>
+</html>
