@@ -27,7 +27,7 @@
     </div>
     <textarea id="output" cols="30" rows="10"></textarea>
     <script>
-        async function loadXMLbook (url = 'http://link.to/contacts.xml') {
+        async function loadXMLbook (url = 'http://vru-it1.vru.local/phone/xml0.php') {
             const response = await fetch(url)
             const data = await response.text()
             const parser = new DOMParser()
@@ -73,7 +73,7 @@
             const searchEl = document.getElementById('search')
             const outputEl = document.getElementById('output')
             const initialsEl = document.getElementById('initials')
-            document.getElementById('add').addEventListener('click', () => {
+            const addMPK = () => {
                 if (searchEl.value) {
                     const contact = contacts.find( el => el.fullName === searchEl.value)
                     if (contact) {
@@ -82,10 +82,14 @@
                         searchEl.value = ''
                     }
                 }
+            }
+            document.getElementById('add').addEventListener('click', addMPK)
+            searchEl.addEventListener('keyup', (event) => {
+                if(event.key == 'Enter') {
+                    addMPK()
+                }
             })
-            document.getElementById('clear').addEventListener('click', () => {
-                searchEl.value = ''
-            })
+            
         })
 
     </script>
