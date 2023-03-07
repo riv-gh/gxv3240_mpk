@@ -8,3 +8,5 @@ this program is very simply to use:
 4. navigate to MPK EXT settings (Advanced Settings → MPK EXT1 Settings [or 2-4]) in built-in browser
 5. press WriteMKP to add mpks to panel
 6. enjoy
+
+[![downloads](https://img.shields.io/github/downloads/riv-gh/gxv3240_mpk/19.06.05.0/total?style=social)](https://github.com/riv-gh/gxv3240_mpk/releases/tag/19.06.05.0)
